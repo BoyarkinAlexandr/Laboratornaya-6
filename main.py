@@ -1,39 +1,50 @@
 import telebot
-# import psycopg2
-
-# conn = psycopg2.connect(database="service",
-#                         user="alexandrboyarkin",
-#                         password="1234",
-#                         host="localhost",
-#                         port="5432")
-# cursor = conn.cursor()
-
+import psycopg2
 token = "2125768824:AAEfUwuy7CC0BmX8ikZU-WJn6QtlY7fmw68"
 
 bot = telebot.TeleBot(token)
 
+
+conn = psycopg2.connect(database="bot",
+                        user="alexandrboyarkin",
+                        password="54321",
+                        host="localhost",
+                        port="5432")
+cursor = conn.cursor()
+
+bot = telebot.TeleBot(token)
+
+import datetime
+def weeker():
+    today = datetime.datetime.today().strftime("%W")
+
+    if int(today) % 2 == 0:
+        return 'нижняя неделя'
+    else:
+        return 'верхняя неделя'
+
+
+
+
 @bot.message_handler(commands=["start"])
 def start(message):
     keyboard = telebot.types.ReplyKeyboardMarkup()
-    keyboard.row("Понедельник", "Вторник", "Среда", "Четверг", "Пятница",
-                 "Расписание на текущую неделю",
-                 "Расписание на следующую неделю")
-    bot.send_message(message.chat.id, "Привет! Хочешь узнать свежую информацию о МТУСИ?", reply_markup=keyboard)
+    keyboard.row("Понедельник", "Не хочу")
+    bot.send_message(message.chat.id, "Привет, выберите какое расписание вас интересует!", reply_markup=keyboard)
+
+@bot.message_handler(commands=["week"])
+def week(message):
+    bot.send_message(message.chat.id, "Привет! Cейчас: " + weeker())
+
+@bot.message_handler(commands=["mtuci"])
+def mtuci(message):
+    bot.send_message(message.chat.id, "Привет! Официальный сайт МТУСИ - mtuci.ru")
 
 @bot.message_handler(commands=["help"])
 def help(message):
-    bot.send_message(message.chat.id, "Я умею...")
-
-@bot.message_handler(content_types=["text"])
-def answer(message):
-    if message.text.lower() == "хочу" or message.text.lower() == "да":
-        bot.send_message(message.chat.id, "Тогда тебе сюда - mtuci.ru")
-    elif message.text.lower() == "не хочу" or message.text.lower() == "нет":
-        bot.send_message(message.chat.id, "Ладно... Пока... Ясно...")
-    else:
-        bot.send_message(message.chat.id, "Извините, я вас не понял!")
-
-
+    bot.send_message(message.chat.id, "Здравствуйте! Данный бот сделан для расписания группы БФИ2101. Автор: Бояркин Александр"
+                     "\n Команды: \n /help - сведения о работе телеграм бота. \n /start - запуск бота. \n /mtuci - ссылка на официальный сайт ВУЗА МТУСИ"
+                        "\n /week - определяет какая сейчас неделя.")
 
 
 
