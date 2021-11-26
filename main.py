@@ -28,8 +28,10 @@ def weeker():
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    keyboard = telebot.types.ReplyKeyboardMarkup()
-    keyboard.row("Понедельник", "Не хочу")
+    keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.row("Понедельник", "Вторник", "Среда")
+    keyboard.row("Четверг","Пятница")
+    keyboard.row("Расписание на текущую неделю","Расписание на следующую неделю")
     bot.send_message(message.chat.id, "Привет, выберите какое расписание вас интересует!", reply_markup=keyboard)
 
 @bot.message_handler(commands=["week"])
