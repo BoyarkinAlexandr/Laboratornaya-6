@@ -86,59 +86,55 @@ def answer(message):
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-            Time[0][0], Time[0][1], Time[3][2], teachers[0][1],
-            Time[1][0], Time[0][2], Time[4][2], teachers[0][1],
-            Time[2][0], Time[0][3], Time[0][2], teachers[7][1],
-            Time[3][0], Time[0][4], Time[1][2], teachers[10][1],
-            Time[4][0], Time[0][5], Time[2][2], teachers[2][1]))
+            Time[0][0], Time[0][1], Time[0][2], teachers[0][1],
+            Time[1][0], Time[1][1], Time[1][2], teachers[0][1],
+            Time[2][0], Time[1][1], Time[2][2], teachers[8][1],
+            Time[3][0], Time[1][1], Time[3][2], teachers[11][1],
+            Time[4][0], Time[1][1], Time[4][2], teachers[3][1]))
     elif a == "среда":
         cursor.execute("Select id, full_name from teacher")
         teachers = list(cursor.fetchall())
         cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
-                       " Where day = 'Среда'")
+                       " Where day = 'Среда' and week_numb = 'Вверхняя'")
         Time = list(cursor.fetchall())
 
         bot.send_message(message.chat.id, text='\nСреда___Вверхняя неделя___\n'
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-            Time[2][0], Time[2][1], Time[2][2], teachers[0][1],
-            Time[1][0], Time[1][1], Time[1][1], teachers[0][1]))
+            Time[0][0], Time[0][1], Time[0][2], teachers[14][1],
+            Time[1][0], Time[1][1], Time[1][2], teachers[13][1]))
 
     elif a == "четверг":
         cursor.execute("Select id, full_name from teacher")
         teachers = list(cursor.fetchall())
         cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
-                       " Where day = 'Четверг'")
+                       " Where day = 'Четверг' and week_numb = 'Вверхняя'")
         Time = list(cursor.fetchall())
 
         bot.send_message(message.chat.id, text='\nЧетверг___Вверхняя неделя___\n'
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадоватль: {}\n"
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадоватль: {}\n"
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадоватль: {}\n"
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадоватль: {}\n".format(
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[12][1],
-            Time[1][0], Time[0][1], Time[0][2], teachers[12][1],
-            Time[2][0], Time[0][1], Time[0][2], teachers[12][1],
-            Time[3][0], Time[0][1], Time[0][2], teachers[12][1]))
+            Time[0][0], Time[0][1], Time[0][2], teachers[7][1],
+            Time[1][0], Time[1][1], Time[3][2], teachers[0][1],
+            Time[3][0], Time[3][1], Time[1][2], teachers[0][1],
+            Time[2][0], Time[2][1], Time[2][2], teachers[9][1]))
     elif a == "пятница":
         cursor.execute("Select id, full_name from teacher")
         teachers = list(cursor.fetchall())
         cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
-                       " Where day = 'Пятница'")
+                       " Where day = 'Пятница' and week_numb = 'Вверхняя'")
         Time = list(cursor.fetchall())
 
         bot.send_message(message.chat.id, text='\nПятница___Вверхняя неделя___\n'
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадоватль: {}\n"
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадоватль: {}\n"
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадоватль: {}\n"
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадоватль: {}\n".format(
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
             Time[0][0], Time[0][1], Time[0][2], teachers[12][1],
-            Time[1][0], Time[0][1], Time[0][2], teachers[12][1],
-            Time[2][0], Time[0][1], Time[0][2], teachers[12][1],
-            Time[3][0], Time[0][1], Time[0][2], teachers[12][1]))
+            Time[1][0], Time[1][1], Time[1][2], teachers[2][1]))
     elif a == "расписание на текущую неделю":
         cursor.execute("Select id, full_name from teacher")
         teachers = list(cursor.fetchall())
