@@ -1,10 +1,10 @@
 import telebot
 import psycopg2
 import datetime
+
 token = "2125768824:AAEfUwuy7CC0BmX8ikZU-WJn6QtlY7fmw68"
 
 bot = telebot.TeleBot(token)
-
 
 conn = psycopg2.connect(database="bot",
                         user="alexandrboyarkin",
@@ -23,14 +23,12 @@ def weeker():
         return 'верхняя неделя'
 
 
-
-
 @bot.message_handler(commands=["start"])
 def start(message):
     keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.row("Понедельник", "Вторник", "Среда")
-    keyboard.row("Четверг","Пятница")
-    keyboard.row("Расписание на текущую неделю","Расписание на следующую неделю")
+    keyboard.row("Четверг", "Пятница")
+    keyboard.row("Расписание на текущую неделю", "Расписание на следующую неделю")
     bot.send_message(message.chat.id, "Привет, выберите какое расписание вас интересует!", reply_markup=keyboard)
 
 @bot.message_handler(commands=["week"])
@@ -45,7 +43,7 @@ def mtuci(message):
 def help(message):
     bot.send_message(message.chat.id, "Здравствуйте! Данный бот сделан для расписания группы БФИ2101. Автор: Бояркин Александр"
                      "\n Команды: \n /help - сведения о работе телеграм бота. \n /start - запуск бота. \n /mtuci - ссылка на официальный сайт ВУЗА МТУСИ"
-                        "\n /week - определяет какая сейчас неделя.")
+                     "\n /week - определяет какая сейчас неделя.")
 
 @bot.message_handler(content_types=["text"])
 def answer(message):
@@ -53,21 +51,21 @@ def answer(message):
     bot.send_message(message.chat.id, a)
     if a == "понедельник":
         cursor.execute("Select id, full_name from teacher")
-        teachers= list(cursor.fetchall())
+        teachers = list(cursor.fetchall())
         cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
                        " Where day = 'Понедельник'")
         Time = list(cursor.fetchall())
 
-        bot.send_message(message.chat.id,text =''
-                         "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
-                         "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
-                         "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
-                         "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
+        bot.send_message(message.chat.id, text=''
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-                             Time[0][0], Time[0][1], Time[0][2], teachers[14][1],
-                             Time[1][0], Time[0][1], Time[0][2], teachers[8][1],
-                             Time[2][0], Time[0][1], Time[0][2], teachers[3][1],
-                             Time[3][0], Time[0][1], Time[0][2], teachers[3][1]))
+            Time[0][0], Time[0][1], Time[0][2], teachers[14][1],
+            Time[1][0], Time[0][1], Time[0][2], teachers[8][1],
+            Time[2][0], Time[0][1], Time[0][2], teachers[3][1],
+            Time[3][0], Time[0][1], Time[0][2], teachers[3][1]))
 
     elif a == "вторник":
         cursor.execute("Select id, full_name from teacher")
@@ -83,11 +81,11 @@ def answer(message):
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-                                               Time[4][0], Time[4][1], Time[4][2], teachers[0][1],
-                                               Time[5][0], Time[5][1], Time[5][2], teachers[0][1],
-                                               Time[6][0], Time[6][1], Time[6][2], teachers[0][1],
-                                               Time[1][0], Time[1][1], Time[1][2], teachers[0][1],
-                                               Time[1][0], Time[1][1], Time[1][2], teachers[0][1]))
+            Time[3][0], Time[3][1], Time[3][2], teachers[0][1],
+            Time[4][0], Time[4][1], Time[4][2], teachers[0][1],
+            Time[0][0], Time[2][1], Time[0][2], teachers[7][1],
+            Time[1][0], Time[1][1], Time[1][2], teachers[10][1],
+            Time[2][0], Time[0][1], Time[2][2], teachers[2][1]))
     elif a == "среда":
         cursor.execute("Select id, full_name from teacher")
         teachers = list(cursor.fetchall())
@@ -102,11 +100,11 @@ def answer(message):
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-                                                Time[4][0], Time[4][1], Time[4][2], teachers[0][1],
-                                                Time[5][0], Time[5][1], Time[5][2], teachers[0][1],
-                                                Time[6][0], Time[6][1], Time[6][2], teachers[0][1],
-                                                Time[1][0], Time[1][1], Time[1][2], teachers[0][1],
-                                                Time[1][0], Time[1][1], Time[1][2], teachers[0][1]))
+            Time[10][1], Time[8][1], Time[8][2], teachers[0][1],
+            Time[11][1], Time[9][1], Time[9][2], teachers[0][1],
+            Time[12][1], Time[10][1], Time[10][2], teachers[0][1],
+            Time[13][1], Time[11][1], Time[11][2], teachers[0][1],
+            Time[14][1], Time[12][1], Time[11][2], teachers[0][1]))
     elif a == "четверг":
         cursor.execute("Select id, full_name from teacher")
         teachers = list(cursor.fetchall())
@@ -149,13 +147,9 @@ def answer(message):
         bot.send_message(message.chat.id, "Извините, я вас не понял!")
 
 
-
-
-
 bot.infinity_polling()
 
-
 # cursor.execute("SELECT * FROM public.timetable ")
-        # ad = list(cursor.fetchall())
-        # answer = 'Понедельник\n _____________________________\n' + str(ad[0][2]+str(ad[0][3]))
-        # print(ad[2])
+# ad = list(cursor.fetchall())
+# answer = 'Понедельник\n _____________________________\n' + str(ad[0][2]+str(ad[0][3]))
+# print(ad[2])
