@@ -73,12 +73,12 @@ def answer(message):
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[15][1],
+            Time[0][0], Time[0][1], Time[0][2], teachers[14][1],
             Time[1][0], Time[1][1], Time[1][2], teachers[9][1],
             Time[2][0], Time[2][1], Time[2][2], teachers[4][1],
             Time[3][0], Time[3][1], Time[3][2], teachers[4][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[15][1],
+            Time[0][0], Time[0][1], Time[0][2], teachers[14][1],
             Time[1][0], Time[1][1], Time[1][2], teachers[9][1],
             Time[2][0], Time[2][1], Time[2][2], teachers[4][1],
             Time[3][0], Time[3][1], Time[3][2], teachers[4][1]))
@@ -89,6 +89,11 @@ def answer(message):
         cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
                        " Where day = 'Вторник' and week_numb = 'Вверхняя'")
         Time = list(cursor.fetchall())
+
+        cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
+                       " Where day = 'Вторник' and week_numb = 'Нижняя'")
+        Time1 = list(cursor.fetchall())
+
 
         bot.send_message(message.chat.id, text='\n___________Вторник_______________Вверхняя неделя__________________________\n'
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
@@ -101,14 +106,14 @@ def answer(message):
                                                 "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                 "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[0][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[0][1],
-            Time[2][0], Time[1][1], Time[2][2], teachers[8][1],
-            Time[3][0], Time[1][1], Time[3][2], teachers[11][1],
-            Time[4][0], Time[1][1], Time[4][2], teachers[3][1],
+            Time[0][0], Time[0][1], Time[4][2], teachers[0][1],
+            Time[4][0], Time[4][1], Time[0][2], teachers[0][1],
+            Time[1][0], Time[1][1], Time[1][2], teachers[15][1],
+            Time[2][0], Time[2][1], Time[2][2], teachers[11][1],
+            Time[3][0], Time[3][1], Time[3][2], teachers[3][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[0][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[0][1]))
+            Time1[0][0], Time1[0][1], Time1[0][2], teachers[0][1],
+            Time1[1][0], Time1[1][1], Time1[1][2], teachers[0][1]))
 
     elif a == "среда":
         cursor.execute("Select id, full_name from teacher")
@@ -116,6 +121,10 @@ def answer(message):
         cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
                        " Where day = 'Среда' and week_numb = 'Вверхняя'")
         Time = list(cursor.fetchall())
+
+        cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
+                       " Where day = 'Среда' and week_numb = 'Нижняя'")
+        Time1 = list(cursor.fetchall())
 
         bot.send_message(message.chat.id, text='\n__________________________Среда___Вверхняя неделя__________________\n'
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
@@ -125,11 +134,11 @@ def answer(message):
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[14][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[13][1],
+            Time[0][0], Time[0][1], Time[0][2], teachers[13][1],
+            Time[1][0], Time[1][1], Time[1][2], teachers[12][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[14][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[13][1]))
+            Time1[0][0], Time1[0][1], Time1[0][2], teachers[11][1],
+            Time1[1][0], Time1[1][1], Time1[1][2], teachers[12][1]))
 
     elif a == "четверг":
         cursor.execute("Select id, full_name from teacher")
@@ -137,6 +146,10 @@ def answer(message):
         cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
                        " Where day = 'Четверг' and week_numb = 'Вверхняя'")
         Time = list(cursor.fetchall())
+
+        cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
+                       " Where day = 'Четверг' and week_numb = 'Нижняя'")
+        Time1 = list(cursor.fetchall())
 
         bot.send_message(message.chat.id, text='\nЧетверг___Вверхняя неделя___\n'
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
@@ -153,14 +166,18 @@ def answer(message):
             Time[3][0], Time[3][1], Time[1][2], teachers[0][1],
             Time[2][0], Time[2][1], Time[2][2], teachers[9][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[7][1],
-            Time[1][0], Time[1][1], Time[3][2], teachers[0][1]))
+            Time1[0][0], Time1[0][1], Time1[0][2], teachers[15][1],
+            Time1[1][0], Time1[1][1], Time1[1][2], teachers[15][1]))
     elif a == "пятница":
         cursor.execute("Select id, full_name from teacher")
         teachers = list(cursor.fetchall())
         cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
                        " Where day = 'Пятница' and week_numb = 'Вверхняя'")
         Time = list(cursor.fetchall())
+
+        cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
+                       " Where day = 'Пятница' and week_numb = 'Нижняя'")
+        Time1 = list(cursor.fetchall())
 
         bot.send_message(message.chat.id, text='\n__________________Пятница___Вверхняя неделя______________________\n'
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
@@ -170,11 +187,11 @@ def answer(message):
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[12][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[2][1],
+            Time[1][0], Time[1][1], Time[0][2], teachers[2][1],
+            Time[0][0], Time[0][1], Time[1][2], teachers[12][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[12][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[2][1]))
+            Time1[0][0], Time1[0][1], Time1[0][2], teachers[12][1],
+            Time1[1][0], Time1[1][1], Time1[1][2], teachers[2][1]))
     elif a == "расписание на текущую неделю":
         cursor.execute("Select id, full_name from teacher")
         teachers = list(cursor.fetchall())
@@ -208,81 +225,73 @@ def answer(message):
                                                "\n__________________________Пятница___Вверхняя неделя________________\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
-            Time[0][0], Time[0][1], Time[0][2], teachers[15][1],
+            Time[0][0], Time[0][1], Time[0][2], teachers[14][1],
             Time[1][0], Time[1][1], Time[1][2], teachers[9][1],
             Time[2][0], Time[2][1], Time[2][2], teachers[4][1],
             Time[3][0], Time[3][1], Time[3][2], teachers[4][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[0][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[0][1],
-            Time[2][0], Time[1][1], Time[2][2], teachers[8][1],
-            Time[3][0], Time[1][1], Time[3][2], teachers[11][1],
-            Time[4][0], Time[1][1], Time[4][2], teachers[3][1],
+            Time[4][0], Time[4][1], Time[0][2], teachers[0][1],
+            Time[16][0], Time[16][1], Time[16][2], teachers[0][1],
+            Time[5][0], Time[5][1], Time[5][2], teachers[15][1],
+            Time[6][0], Time[6][1], Time[6][2], teachers[11][1],
+            Time[7][0], Time[7][1], Time[7][2], teachers[3][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[14][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[13][1],
+            Time[8][0], Time[8][1], Time[8][2], teachers[13][1],
+            Time[9][0], Time[9][1], Time[9][2], teachers[12][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[7][1],
-            Time[1][0], Time[1][1], Time[3][2], teachers[0][1],
-            Time[3][0], Time[3][1], Time[1][2], teachers[0][1],
-            Time[2][0], Time[2][1], Time[2][2], teachers[9][1],
+            Time[10][0], Time[10][1], Time[10][2], teachers[7][1],
+            Time[11][0], Time[11][1], Time[11][2], teachers[0][1],
+            Time[15][0], Time[15][1], Time[15][2], teachers[0][1],
+            Time[12][0], Time[12][1], Time[12][2], teachers[9][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[12][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[2][1]))
+            Time[13][0], Time[13][1], Time[13][2], teachers[2][1],
+            Time[14][0], Time[14][1], Time[14][2], teachers[12][1]))
     elif a == "расписание на следующую неделю":
         cursor.execute("Select id, full_name from teacher")
         teachers = list(cursor.fetchall())
         cursor.execute("Select timetable.subject, room_numb, start_time from timetable"
                        " Where week_numb = 'Нижняя'")
-        Time = list(cursor.fetchall())
-        bot.send_message(message.chat.id, text='\n___________Понедельник_______________Вверхняя неделя__________________________\n'
+        Time1 = list(cursor.fetchall())
+        bot.send_message(message.chat.id, text='\n___________Понедельник_______________Нижняя неделя__________________________\n'
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
 
-                                                "\n___________Вторник_______________Вверхняя неделя__________________________\n"
+                                                "\n___________Вторник_______________Нижняя неделя__________________________\n"
                                                 "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                 "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
-                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                                
+
+                                                "\n__________________________Среда___Нижняяя неделя__________________\n"
                                                 "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                 "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
 
-                                                "\n__________________________Среда___Вверхняянеделя__________________\n"
-                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
-                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                               "\n__________________________Четверг___Нижняя неделя________________\n"
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
+                                               
 
-                                               "\n__________________________Четверг___Вверхняя неделя________________\n"
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
-                                               "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
-
-                                               "\n__________________________Пятница___Вверхняя неделя________________\n"
+                                               "\n__________________________Пятница___Нижняя неделя________________\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n"
                                                "\nПредмет: {}\nКабинет: {}\nВремя: {}\nПрепадователь: {}\n".format(
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[15][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[9][1],
-            Time[2][0], Time[2][1], Time[2][2], teachers[4][1],
-            Time[3][0], Time[3][1], Time[3][2], teachers[4][1],
+            Time1[0][0], Time1[0][1], Time1[0][2], teachers[14][1],
+            Time1[1][0], Time1[1][1], Time1[1][2], teachers[9][1],
+            Time1[2][0], Time1[2][1], Time1[2][2], teachers[4][1],
+            Time1[3][0], Time1[3][1], Time1[3][2], teachers[4][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[0][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[0][1],
-            Time[2][0], Time[1][1], Time[2][2], teachers[8][1],
-            Time[3][0], Time[1][1], Time[3][2], teachers[11][1],
-            Time[4][0], Time[1][1], Time[4][2], teachers[3][1],
+            Time1[4][0], Time1[4][1], Time1[4][2], teachers[0][1],
+            Time1[5][0], Time1[5][1], Time1[5][2], teachers[0][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[14][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[13][1],
+            Time1[6][0], Time1[6][1], Time1[6][2], teachers[11][1],
+            Time1[7][0], Time1[7][1], Time1[7][2], teachers[12][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[7][1],
-            Time[1][0], Time[1][1], Time[3][2], teachers[0][1],
-            Time[3][0], Time[3][1], Time[1][2], teachers[0][1],
-            Time[2][0], Time[2][1], Time[2][2], teachers[9][1],
+            Time1[8][0], Time1[8][1], Time1[8][2], teachers[15][1],
+            Time1[9][0], Time1[9][1], Time1[9][2], teachers[15][1],
 
-            Time[0][0], Time[0][1], Time[0][2], teachers[12][1],
-            Time[1][0], Time[1][1], Time[1][2], teachers[2][1]))
+            Time1[10][0], Time1[10][1], Time1[10][2], teachers[2][1],
+            Time1[11][0], Time1[11][1], Time1[11][2], teachers[12][1]))
     else:
         bot.send_message(message.chat.id, "Извините, я вас не понял!")
 
